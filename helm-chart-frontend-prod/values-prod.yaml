@@ -1,0 +1,28 @@
+namespace: prod-periplay
+
+frontend:
+  name: prod-periplay-k8-webapp-frontend
+  appLabel: prod-periplay-k8-webapp-frontend
+  replicas: 3
+  selector: frontend
+  image: localhost:5000/prod-periplay-front:prod-latest
+  containerPort: 4200
+  env:
+    apiUrl: "http://backend-service-prod:8080"
+    postgresqlHost: "postgresql-service.prod-periplay.svc.cluster.local"
+    postgresqlPort: "5432"
+    postgresqlDb: "periplaydb"
+    postgresqlUser: "periplayuser"
+    secretName: postgresql-secret-prod
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "500m"
+    limits:
+      memory: "2Gi"
+      cpu: "1"
+  service:
+    name: frontend-service-prod
+    port: 4200
+    targetPort: 4200
+    nodePort: 30002
