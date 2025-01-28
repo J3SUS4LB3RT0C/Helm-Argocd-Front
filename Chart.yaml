@@ -1,0 +1,6 @@
+apiVersion: v2
+name: frontend-chart
+description: Helm chart para desplegar el frontend de la aplicación Periplay en Kubernetes
+type: application
+version: 1.0.0
+appVersion: 1.0.0
