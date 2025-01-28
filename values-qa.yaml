@@ -1,0 +1,28 @@
+namespace: qa-periplay
+
+frontend:
+  name: qa-periplay-k8-webapp-frontend-ft
+  appLabel: qa-periplay-k8-webapp-frontend-ft
+  replicas: 1
+  selector: frontend
+  image: localhost:5000/qa-periplay-front:latest
+  containerPort: 4200
+  env:
+    apiUrl: "http://backend-service:8080"
+    postgresqlHost: "postgresql-service.qa-periplay.svc.cluster.local"
+    postgresqlPort: "5432"
+    postgresqlDb: "periplaydb"
+    postgresqlUser: "periplayuser"
+    secretName: postgresql-secret
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+  service:
+    name: frontend-service-qa
+    port: 4200
+    targetPort: 4200
+    nodePort: 30001
