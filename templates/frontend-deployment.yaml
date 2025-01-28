@@ -22,19 +22,19 @@ spec:
             - containerPort: {{ .Values.frontend.containerPort }}
           env:
             - name: API_URL
-              value: {{ .Values.frontend.env.apiUrl }}
+              value: "{{ .Values.frontend.env.apiUrl }}"
             - name: POSTGRESQL_SERVICE_HOST
-              value: {{ .Values.frontend.env.postgresqlHost }}
+              value: "{{ .Values.frontend.env.postgresqlHost }}"
             - name: POSTGRESQL_SERVICE_PORT
-              value: {{ .Values.frontend.env.postgresqlPort }}
+              value: "{{ .Values.frontend.env.postgresqlPort }}"
             - name: POSTGRESQL_DB
-              value: {{ .Values.frontend.env.postgresqlDb }}
+              value: "{{ .Values.frontend.env.postgresqlDb }}"
             - name: POSTGRESQL_USER
-              value: {{ .Values.frontend.env.postgresqlUser }}
+              value: "{{ .Values.frontend.env.postgresqlUser }}"
             - name: POSTGRESQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.frontend.env.secretName }}
+                  name: "{{ .Values.frontend.env.secretName }}"
                   key: password
           resources:
             requests:
