@@ -3,7 +3,7 @@ namespace: qa-periplay
 frontend:
   name: qa-periplay-k8-webapp-frontend-ft
   appLabel: qa-periplay-k8-webapp-frontend-ft
-  replicas: 2
+  replicas: 1
   selector: frontend
   image: localhost:5000/qa-periplay-front:latest
   containerPort: 4200
