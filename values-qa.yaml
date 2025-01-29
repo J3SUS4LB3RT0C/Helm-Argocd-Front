@@ -25,4 +25,4 @@ frontend:
     name: frontend-service-qa
     port: 4200
     targetPort: 4200
-    nodePort: 30001
+    nodePort: 30002
